@@ -10,7 +10,7 @@
   </a>
 
   <a href="https://badge.fury.io/js/kb-burly">
-    <img src="https://badge.fury.io/js/kb-burly.svg" alt="npm version" height="18">
+    <img src="https://badge.fury.io/js/kb-burly.svg" alt="npm version" height="20">
   </a>
   
   <p align="center">A simple Typescript URL builder<p>
