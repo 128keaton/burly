@@ -65,14 +65,15 @@ export function Burly(any?: any): Burly {
         addParam<T extends AbstractBurly>(key: any, value?: any, strict?: boolean): BurlyClass {
             if (typeof key === 'object') {
                 return this.parseMultipleParameters(key, !!value);
-            } else if (value !== null && value !== undefined) {
-                const previousPathname = this.pathname;
-                this.pathname = this.pathname.replace(`:${key}`, encodeURIComponent(value));
-
-                if (!strict && this.pathname === previousPathname) {
-                    return this.addQuery(key, value);
-                }
             }
+
+            const previousPathname = this.pathname;
+            this.pathname = this.pathname.replace(`:${key}`, encodeURIComponent(value));
+
+            if (!strict && this.pathname === previousPathname) {
+                return this.addQuery(key, value);
+            }
+
             return this;
         }
 
