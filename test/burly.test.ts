@@ -6,6 +6,8 @@ const templateFragment = '/template-fragment';
 let emptyBuilder: BurlyInstance;
 let emptyBuilderWithTemplate: BurlyInstance;
 
+class BadClass {}
+
 beforeEach(() => {
     emptyBuilder = Burly();
     emptyBuilderWithTemplate = Burly().useTemplate(templateFragment);
@@ -74,3 +76,39 @@ it('#test-query-null-object', function () {
 
     expect(emptyBuilderWithTemplate.addQuery(paramKey, paramVal).get).toEqual(`${templateFragment}?${paramKey}=${paramVal}`);
 });
+
+it('#test-create-instance', function () {
+    const paramKey = 'key1';
+    const paramVal = 'not-null';
+    emptyBuilderWithTemplate.addQuery({
+        key1: paramVal,
+        key2: null
+    });
+
+    const newBuilder = Burly(emptyBuilderWithTemplate);
+    expect(newBuilder.get).toEqual(`${templateFragment}?${paramKey}=${paramVal}`);
+});
+
+it('#test-create-instance-invalid', function () {
+    const badInstance = () => {
+       return  Burly(new BadClass())
+    };
+
+    expect(badInstance).toThrow(TypeError)
+});
+
+it('#test-param-object', function () {
+    const firstParamKey = 'key1';
+    const secondParamKey = 'key2';
+
+    const firstParamVal = 'val1';
+    const secondParamVal = 'val2';
+
+    emptyBuilderWithTemplate.addQuery({
+        key1: firstParamVal,
+        key2: secondParamVal
+    });
+
+    expect(emptyBuilderWithTemplate.get).toEqual(`${templateFragment}?${firstParamKey}=${firstParamVal}&${secondParamKey}=${secondParamVal}`);
+});
+

@@ -31,7 +31,7 @@ export function Burly(any?: any): Burly {
             if (!!_any) {
                 if (typeof _any === 'string') {
                     this.fromString(any.toString());
-                } else if (_any instanceof BurlyClass) {
+                } else if (_any instanceof Object && _any.hasOwnProperty('name') && _any['name'] === 'Burly') {
                     this.fromInstance(any);
                 } else {
                     throw new TypeError(`Cannot create a new Burly class passing type ${typeof any}`);
