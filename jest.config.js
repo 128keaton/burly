@@ -5,7 +5,7 @@ module.exports = {
         '^.+\\.tsx?$': 'ts-jest'
     },
     coverageDirectory: 'test/coverage',
-    testRegex: '/test/.*',
+    testRegex: '/test/burly.test.ts',
     testEnvironment: 'node',
     moduleFileExtensions: [...defaults.moduleFileExtensions, 'ts', 'js'],
 };
