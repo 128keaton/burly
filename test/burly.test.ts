@@ -1,4 +1,4 @@
-import {Burly, BurlyInstance} from '../src/';
+import {BurlyInstance, Burly} from "../dist/burly";
 
 const testURL = 'http://test.com/test';
 const templateFragment = '/template-fragment';

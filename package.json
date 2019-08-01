@@ -1,11 +1,12 @@
 {
   "name": "kb-burly",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A simple URL builder written in Typescript",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/burly.js",
+  "types": "dist/burly.d.ts",
   "scripts": {
-    "build": "tsc",
+    "clean": "rm -rf dist && mkdir dist",
+    "build": "npm run clean && tsc",
     "test": "jest --config=jest.config.js",
     "prepublish": "npm test",
     "coveralls": "jest --coverage && cat ./test/coverage/lcov.info | coveralls"
