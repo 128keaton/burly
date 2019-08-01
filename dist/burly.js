@@ -7,8 +7,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var url_1 = require("url");
 var qs = __importStar(require("qs"));
+var BaseURL = __importStar(require("url"));
 function Burly(any) {
     var BurlyClass = /** @class */ (function () {
         function BurlyClass(_any) {
@@ -65,13 +65,13 @@ function Burly(any) {
         };
         Object.defineProperty(BurlyClass.prototype, "get", {
             get: function () {
-                return url_1.format(this);
+                return BaseURL.format(this);
             },
             enumerable: true,
             configurable: true
         });
         BurlyClass.prototype.fromString = function (baseURL) {
-            var parsedURL = url_1.parse(baseURL);
+            var parsedURL = BaseURL.parse(baseURL);
             this.assignFields(parsedURL);
             this._prefix = this.pathname;
             if (this._prefix === '/') {

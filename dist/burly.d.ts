@@ -1,9 +1,9 @@
-declare module 'url' {
-    interface URL {
-        [key: string]: string | any;
-    }
+/// <reference types="node" />
+import * as BaseURL from "url";
+export interface URL extends BaseURL.Url {
+    [key: string]: string | any;
 }
-export interface BurlyInstance extends Object {
+export declare interface BurlyInstance extends URL {
     [key: string]: string | any;
     query: {
         [key: string]: string;

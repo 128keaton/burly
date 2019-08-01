@@ -1,13 +1,11 @@
-import {URL, parse, format} from "url";
 import * as qs from 'qs'
+import * as BaseURL from "url";
 
-declare module 'url' {
-    export interface URL {
-        [key: string]: string | any;
-    }
+export interface URL extends BaseURL.Url {
+    [key: string]: string | any;
 }
 
-export declare interface BurlyInstance extends Object {
+export declare interface BurlyInstance extends URL {
     [key: string]: string | any;
 
     query: { [key: string]: string };
@@ -31,7 +29,7 @@ interface Burly extends BurlyInstance {
 }
 
 export function Burly(any?: any): Burly {
-    interface BurlyInterface extends Object {
+    interface BurlyInterface extends BurlyInstance {
         [key: string]: string | any;
 
         query: { [key: string]: string };
@@ -136,11 +134,11 @@ export function Burly(any?: any): Burly {
         }
 
         get get(): string {
-            return format(this);
+            return BaseURL.format(this);
         }
 
         private fromString(baseURL: string) {
-            const parsedURL = (parse(baseURL) as unknown) as URL;
+            const parsedURL = (BaseURL.parse(baseURL) as unknown) as URL;
             this.assignFields(parsedURL);
 
             this._prefix = this.pathname;
