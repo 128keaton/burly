@@ -91,3 +91,9 @@ typings/
 
 .idea
 .coveralls.yml
+clover.xml
+coverage-final.json
+lcov.info
+coverage/lcov-report/
+
+.DS_Store

@@ -1,8 +1,9 @@
 {
-  "name": "burly",
+  "name": "kb-burly",
   "version": "0.0.2",
   "description": "A simple URL builder written in Typescript",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "jest --config=jest.config.js",
@@ -36,5 +37,8 @@
   },
   "dependencies": {
     "qs": "^6.7.0"
-  }
+  },
+  "files": [
+    "dist"
+  ]
 }
