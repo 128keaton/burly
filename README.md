@@ -19,3 +19,7 @@ const burly = Burly("https://api.com/find")
               .addParam("id", 1234)
               .get; // = https://api.com/find?id=1234
 ```
+
+## Credits
+
+_Based heavily on [url-assembler](https://github.com/Floby/node-url-assembler) by Florent Jaby_
