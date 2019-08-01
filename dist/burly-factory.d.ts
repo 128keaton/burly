@@ -1,7 +1,10 @@
-import { Burly } from "./burly";
+import { BurlyInstance } from "./burly";
 declare module 'url' {
     interface URL {
         [key: string]: string | any;
     }
 }
-export declare function BurlyFactory(any: any): Burly;
+interface Burly extends BurlyInstance {
+}
+export declare function Burly(any?: any): Burly;
+export {};
