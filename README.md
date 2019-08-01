@@ -1,3 +1,4 @@
+<center>
 ![Burly](https://images.128keaton.com/burly.png)
 
 
@@ -5,6 +6,7 @@
 [![Build Status](https://travis-ci.com/128keaton/burly.svg?branch=master)](https://travis-ci.com/128keaton/burly)
 
 A simple Typescript URL builder
+</center>
 
 ## Installation
 
