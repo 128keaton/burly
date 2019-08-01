@@ -1,4 +1,6 @@
-![Burly](https://images.128keaton.com/burly.png)
+# ![Burly](https://images.128keaton.com/burly.png)
+
+
 [![Coverage Status](https://coveralls.io/repos/github/128keaton/burly/badge.svg?branch=master)](https://coveralls.io/github/128keaton/burly?branch=master)
 [![Build Status](https://travis-ci.com/128keaton/burly.svg?branch=master)](https://travis-ci.com/128keaton/burly)
 
