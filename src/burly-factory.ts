@@ -112,7 +112,7 @@ export function Burly(any?: any): Burly {
             }
 
             if (this.search.length > 1) {
-                qs.parse(this.search.substring(1))
+                this.addQuery(qs.parse(this.search.substring(1)));
             }
         }
 

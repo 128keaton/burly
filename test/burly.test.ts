@@ -112,3 +112,13 @@ it('#test-param-object', function () {
     expect(emptyBuilderWithTemplate.get).toEqual(`${templateFragment}?${firstParamKey}=${firstParamVal}&${secondParamKey}=${secondParamVal}`);
 });
 
+it('#test-prefix', function () {
+    expect(Burly('/').get).toEqual('');
+});
+
+it('#test-search', function () {
+    expect(Burly(testURL + '?search').get).toEqual(testURL + '?search');
+});
+
+
+
