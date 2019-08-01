@@ -7,7 +7,7 @@ A simple Typescript URL builder
 ## Installation
 
 ```sh
-npm i --save burly
+npm i --save kb-burly
 ```
 
 ## Usage
