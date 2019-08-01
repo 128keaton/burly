@@ -1,12 +1,16 @@
-<center>
-![Burly](https://images.128keaton.com/burly.png)
+<p align="center">
+  <img src="https://images.128keaton.com/burly.png" alt="Burly">
+  <br>
+  <a href="https://coveralls.io/github/128keaton/burly?branch=master">
+    <img src="https://coveralls.io/repos/github/128keaton/burly/badge.svg?branch=master" alt="Coverage">
+  </a>
+  
+  <a href="(https://travis-ci.com/128keaton/burly">
+    <img src="https://travis-ci.com/128keaton/burly.svg?branch=master" alt="Travis">
+  </a>
 
-
-[![Coverage Status](https://coveralls.io/repos/github/128keaton/burly/badge.svg?branch=master)](https://coveralls.io/github/128keaton/burly?branch=master)
-[![Build Status](https://travis-ci.com/128keaton/burly.svg?branch=master)](https://travis-ci.com/128keaton/burly)
-
-A simple Typescript URL builder
-</center>
+  <p align="center">A simple Typescript URL builder<p>
+</p>
 
 ## Installation
 
