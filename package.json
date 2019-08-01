@@ -1,6 +1,6 @@
 {
   "name": "burly",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple URL builder written in Typescript",
   "main": "dist/index.js",
   "scripts": {
