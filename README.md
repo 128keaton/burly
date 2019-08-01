@@ -5,7 +5,7 @@
     <img src="https://coveralls.io/repos/github/128keaton/burly/badge.svg?branch=master" alt="Coverage">
   </a>
   
-  <a href="(https://travis-ci.com/128keaton/burly">
+  <a href="https://travis-ci.com/128keaton/burly">
     <img src="https://travis-ci.com/128keaton/burly.svg?branch=master" alt="Travis">
   </a>
 
