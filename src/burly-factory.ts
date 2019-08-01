@@ -62,10 +62,10 @@ export function Burly(any?: any): Burly {
             return this;
         }
 
-        addParam<T extends AbstractBurly>(key: any, value: any, strict?: boolean): BurlyClass {
+        addParam<T extends AbstractBurly>(key: any, value?: any, strict?: boolean): BurlyClass {
             if (typeof key === 'object') {
                 return this.parseMultipleParameters(key, !!value);
-            } else {
+            } else if (value !== null && value !== undefined) {
                 const previousPathname = this.pathname;
                 this.pathname = this.pathname.replace(`:${key}`, encodeURIComponent(value));
 
@@ -98,7 +98,6 @@ export function Burly(any?: any): Burly {
         get get(): string {
             return format(this);
         }
-
 
         private fromString(baseURL: string) {
             const parsedURL = (parse(baseURL) as unknown) as URL;

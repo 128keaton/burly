@@ -104,12 +104,22 @@ it('#test-param-object', function () {
     const firstParamVal = 'val1';
     const secondParamVal = 'val2';
 
-    emptyBuilderWithTemplate.addQuery({
+    emptyBuilderWithTemplate.addParam({
         key1: firstParamVal,
         key2: secondParamVal
     });
 
     expect(emptyBuilderWithTemplate.get).toEqual(`${templateFragment}?${firstParamKey}=${firstParamVal}&${secondParamKey}=${secondParamVal}`);
+});
+
+
+it('#test-param-string', function () {
+    const paramKey = 'key1';
+    const paramVal = 'val1';
+
+    emptyBuilderWithTemplate.addParam(paramKey, paramVal);
+
+    expect(emptyBuilderWithTemplate.get).toEqual(`${templateFragment}?${paramKey}=${paramVal}`);
 });
 
 it('#test-prefix', function () {
@@ -120,5 +130,9 @@ it('#test-search', function () {
     expect(Burly(testURL + '?search').get).toEqual(testURL + '?search');
 });
 
+it('#test-add-segment', function () {
+    const segment = '/test';
+    expect(emptyBuilderWithTemplate.useTemplate(testURL).addSegment(segment).get).toEqual(testURL + segment);
+});
 
 
