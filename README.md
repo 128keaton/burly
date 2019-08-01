@@ -11,9 +11,11 @@ npm i --save kb-burly
 ```
 
 ## Usage
-
+[![Edit gallant-hodgkin-t6lzw](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/gallant-hodgkin-t6lzw?fontsize=14)
 #### Basic Example:
 
 ```ts
-const burly = Burly('https://api.com/find?thing').addParam('id', 1234);            
+const burly = Burly("https://api.com/find")
+              .addParam("id", 1234)
+              .get; // = https://api.com/find?id=1234
 ```
