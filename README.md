@@ -23,7 +23,7 @@ npm i --save kb-burly
 ```
 
 ## Usage
-[![Edit gallant-hodgkin-t6lzw](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/gallant-hodgkin-t6lzw?fontsize=14)
+[![Edit burly-examples-t6lzw](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/burly-examples-t6lzw)
 #### Basic Example:
 
 ```ts
