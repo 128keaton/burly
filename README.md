@@ -44,7 +44,7 @@ const burly = Burly('http://test.com')
               .addQuery('where', object)
               .get; // = http://test.com?where=yes%3D%27no%27%26maybe%3D%27%2Ftest%2F%27
 ```
-### Bad Parameter Example:
+#### Bad Parameter Example:
 ```ts
 const burly = Burly("http://bad-param.blog")
               .addParam('bad', null)
