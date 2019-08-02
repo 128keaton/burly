@@ -1,5 +1,5 @@
 /// <reference types="node" />
-import * as BaseURL from "url";
+import * as BaseURL from 'url';
 export interface URL extends BaseURL.Url {
     [key: string]: string | any;
 }

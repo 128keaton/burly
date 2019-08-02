@@ -65,7 +65,7 @@ function Burly(any) {
         };
         Object.defineProperty(BurlyClass.prototype, "get", {
             get: function () {
-                return BaseURL.format(this);
+                return BaseURL.format(this).replace(/'/g, '%27');
             },
             enumerable: true,
             configurable: true
@@ -115,14 +115,33 @@ function Burly(any) {
                     }
                 });
             };
+            var addNestedParameters = function (key, aHash) {
+                var nestedQueryParam = [];
+                Object.keys(aHash).forEach(function (hashKey) {
+                    if (aHash[hashKey] !== null && aHash[hashKey] !== undefined) {
+                        if (typeof aHash[hashKey] === 'string' && !aHash[hashKey].includes('/\'')) {
+                            nestedQueryParam.push(hashKey + "='" + aHash[hashKey] + "'");
+                        }
+                        else {
+                            nestedQueryParam.push(hashKey + "=" + aHash[hashKey]);
+                        }
+                    }
+                });
+                if (nestedQueryParam.length > 0) {
+                    query[key] = nestedQueryParam.join('&');
+                }
+            };
             var addSingleParameter = function (key, value) {
                 if (value !== null && value !== undefined) {
                     query[key] = value;
                 }
             };
             return function (key, value) {
-                if (!value && typeof key === 'object') {
+                if (typeof key === 'object') {
                     addMultipleParameters(key);
+                }
+                else if (!!value && typeof value === 'object') {
+                    addNestedParameters(key, value);
                 }
                 else {
                     addSingleParameter(key, value);
