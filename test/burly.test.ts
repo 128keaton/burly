@@ -135,4 +135,44 @@ it('#test-add-segment', function () {
     expect(emptyBuilderWithTemplate.useTemplate(testURL).addSegment(segment).get).toEqual(testURL + segment);
 });
 
+it('#test-add-nested-query', function () {
+    const object: {[key: string]: any } = {
+        yes: 'no',
+        maybe: '/test/',
+        cool: 1234,
+        bad: null,
+        realBad: undefined
+    };
+
+    let queryURL = '';
+    const queryKey = 'where';
+    const queryURLHash: string[] = [];
+
+    Object.keys(object).forEach(hashKey => {
+        if (object[hashKey] !== undefined && object[hashKey] !== null) {
+            if (typeof object[hashKey] === 'string' && !object[hashKey].includes('/\'')) {
+                queryURLHash.push(`${hashKey}='${object[hashKey]}'`)
+            } else {
+                queryURLHash.push(`${hashKey}=${object[hashKey]}`)
+            }
+        }
+    });
+
+    if (queryURLHash.length > 0) {
+        queryURL = queryKey + '=' + encodeURIComponent(`${queryURLHash.join('&')}`).replace(/'/g, '%27');
+    }
+
+
+    expect(emptyBuilderWithTemplate.useTemplate(testURL).addQuery(queryKey, object).get).toEqual(testURL + '?' + queryURL);
+});
+
+it('#test-add-empty-nested-query', function () {
+    const object: {[key: string]: any } = {
+        bad: null,
+        realBad: undefined
+    };
+
+    const queryKey = 'where';
+    expect(emptyBuilderWithTemplate.useTemplate(testURL).addQuery(queryKey, object).get).toEqual(testURL);
+});
 

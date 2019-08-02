@@ -1,5 +1,5 @@
 import * as qs from 'qs'
-import * as BaseURL from "url";
+import * as BaseURL from 'url';
 
 export interface URL extends BaseURL.Url {
     [key: string]: string | any;
@@ -14,11 +14,15 @@ export declare interface BurlyInstance extends URL {
     getParsedQuery: any;
 
     addParam(key: any, value?: any, strict?: boolean): BurlyInstance
+
     addSegment(segment: string): BurlyInstance
+
     addPrefix(prefix: string): BurlyInstance
+
     addQuery(key: any, value?: any): BurlyInstance
 
     useTemplate(templateFragment: string): BurlyInstance
+
     get: string
 
     readonly name: string
@@ -38,17 +42,21 @@ export function Burly(any?: any): Burly {
         getParsedQuery: any;
 
         addParam(key: any, value?: any, strict?: boolean): BurlyInstance
+
         addSegment(segment: string): BurlyInstance
+
         addPrefix(prefix: string): BurlyInstance
+
         addQuery(key: any, value?: any): BurlyInstance
 
         useTemplate(templateFragment: string): BurlyInstance
+
         get: string
 
         readonly name: string
     }
 
-    
+
     class BurlyClass implements BurlyInterface {
         [key: string]: string | any;
 
@@ -134,7 +142,7 @@ export function Burly(any?: any): Burly {
         }
 
         get get(): string {
-            return BaseURL.format(this);
+            return BaseURL.format(this).replace(/'/g, '%27');
         }
 
         private fromString(baseURL: string) {
@@ -188,6 +196,23 @@ export function Burly(any?: any): Burly {
                 });
             };
 
+            const addNestedParameters = (key: string, aHash: { [key: string]: any }) => {
+                const nestedQueryParam: string[] = [];
+                Object.keys(aHash).forEach(hashKey => {
+                    if (aHash[hashKey] !== null && aHash[hashKey] !== undefined) {
+                        if (typeof aHash[hashKey] === 'string' && !aHash[hashKey].includes('/\'')) {
+                            nestedQueryParam.push(`${hashKey}='${aHash[hashKey]}'`)
+                        } else {
+                            nestedQueryParam.push(`${hashKey}=${aHash[hashKey]}`)
+                        }
+                    }
+                });
+
+                if (nestedQueryParam.length > 0) {
+                    query[key] = nestedQueryParam.join('&');
+                }
+            };
+
             const addSingleParameter = (key: string, value: any) => {
                 if (value !== null && value !== undefined) {
                     query[key] = value;
@@ -195,10 +220,12 @@ export function Burly(any?: any): Burly {
             };
 
             return (key: any, value?: any) => {
-                if (!value && typeof key === 'object') {
+                if (typeof key === 'object') {
                     addMultipleParameters(key);
+                } else if (!!value && typeof value === 'object') {
+                    addNestedParameters(key, value);
                 } else {
-                    addSingleParameter(key, value);
+                    addSingleParameter(key, value)
                 }
                 return this;
             }

@@ -1,6 +1,6 @@
 {
   "name": "kb-burly",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A simple URL builder written in Typescript",
   "main": "dist/burly.js",
   "types": "dist/burly.d.ts",
@@ -28,6 +28,7 @@
   "homepage": "https://github.com/128keaton/burly#readme",
   "devDependencies": {
     "@types/jest": "^24.0.16",
+    "@types/node": "^12.6.9",
     "@types/qs": "^6.5.3",
     "coveralls": "^3.0.5",
     "jest": "^24.8.0",
