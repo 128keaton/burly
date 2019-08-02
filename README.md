@@ -31,6 +31,19 @@ const burly = Burly("https://api.com/find")
               .addParam("id", 1234)
               .get; // = https://api.com/find?id=1234
 ```
+#### Nested Example:
+
+```ts
+const object = {
+  yes: 'no',
+  maybe: '/test/',
+  bad: null
+}
+
+const burly = Burly('http://test.com')
+              .addQuery('where', object)
+              .get; // = http://test.com?where=yes%3D%27no%27%26maybe%3D%27%2Ftest%2F%27
+```
 
 ## Credits
 
