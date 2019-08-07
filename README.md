@@ -17,21 +17,25 @@
 </p>
 
 ## Installation
+---------
 
 ```sh
 npm i --save kb-burly
 ```
 
-## Usage
+Usage
+---------
+
+
 [![Edit burly-examples-t6lzw](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/burly-examples-t6lzw)
-#### Basic Example:
+#### Basic:
 
 ```ts
 const burly = Burly("https://api.com/find")
               .addParam("id", 1234)
               .get; // = https://api.com/find?id=1234
 ```
-#### Nested Example:
+#### Nested query:
 
 ```ts
 const object = {
@@ -44,13 +48,19 @@ const burly = Burly('http://test.com')
               .addQuery('where', object)
               .get; // = http://test.com?where=yes%3D%27no%27%26maybe%3D%27%2Ftest%2F%27
 ```
-#### Bad Parameter Example:
+#### Null parameter:
 ```ts
 const burly = Burly("http://bad-param.blog")
               .addParam('bad', null)
               .get; // = http://bad-param.blog
 ```
 
-## Credits
+Reference:
+----------
+
+###### new Burly([baseURL])
+
+Credits
+--------
 
 _Based heavily on [url-assembler](https://github.com/Floby/node-url-assembler) by Florent Jaby_
