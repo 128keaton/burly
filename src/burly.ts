@@ -1,4 +1,4 @@
-import * as qs from 'qs'
+import {parse as qsParse} from 'querystring';
 import {Url, format, parse} from 'url'
 
 export interface URL extends Url {
@@ -157,7 +157,7 @@ export function Burly(any?: any): Burly {
             }
 
             if (this.search.length > 1) {
-                this.addQuery(qs.parse(this.search.substring(1)));
+                this.addQuery(qsParse(this.search.substring(1)));
             }
         }
 
