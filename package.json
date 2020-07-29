@@ -1,6 +1,6 @@
 {
   "name": "kb-burly",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A simple URL builder written in Typescript",
   "main": "dist/burly.js",
   "types": "dist/burly.d.ts",
