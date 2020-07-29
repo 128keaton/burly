@@ -1,13 +1,7 @@
 "use strict";
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var qs = __importStar(require("qs"));
+exports.Burly = void 0;
+var querystring_1 = require("querystring");
 var url_1 = require("url");
 function Burly(any) {
     var BurlyClass = /** @class */ (function () {
@@ -67,7 +61,7 @@ function Burly(any) {
             get: function () {
                 return url_1.format(this).replace(/'/g, '%27');
             },
-            enumerable: true,
+            enumerable: false,
             configurable: true
         });
         BurlyClass.prototype.fromString = function (baseURL) {
@@ -79,7 +73,7 @@ function Burly(any) {
                 this.pathname = '';
             }
             if (this.search.length > 1) {
-                this.addQuery(qs.parse(this.search.substring(1)));
+                this.addQuery(querystring_1.parse(this.search.substring(1)));
             }
         };
         BurlyClass.prototype.fromInstance = function (instance) {
