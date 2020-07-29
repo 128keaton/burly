@@ -162,8 +162,10 @@ it('#test-add-nested-query', function () {
         queryURL = queryKey + '=' + encodeURIComponent(`${queryURLHash.join('&')}`).replace(/'/g, '%27');
     }
 
+    let result = emptyBuilderWithTemplate.useTemplate(testURL).addQuery(queryKey, object).get
 
-    expect(emptyBuilderWithTemplate.useTemplate(testURL).addQuery(queryKey, object).get).toEqual(testURL + '?' + queryURL);
+    console.log('Result:', result);
+    expect(result).toEqual(testURL + '?' + queryURL);
 });
 
 it('#test-add-empty-nested-query', function () {

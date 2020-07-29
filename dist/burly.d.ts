@@ -1,6 +1,6 @@
 /// <reference types="node" />
-import * as BaseURL from 'url';
-export interface URL extends BaseURL.Url {
+import { Url } from 'url';
+export interface URL extends Url {
     [key: string]: string | any;
 }
 export declare interface BurlyInstance extends URL {

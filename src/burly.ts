@@ -1,7 +1,7 @@
 import * as qs from 'qs'
-import * as BaseURL from 'url';
+import {Url, format, parse} from 'url'
 
-export interface URL extends BaseURL.Url {
+export interface URL extends Url {
     [key: string]: string | any;
 }
 
@@ -142,11 +142,11 @@ export function Burly(any?: any): Burly {
         }
 
         get get(): string {
-            return BaseURL.format(this).replace(/'/g, '%27');
+            return format(this).replace(/'/g, '%27');
         }
 
         private fromString(baseURL: string) {
-            const parsedURL = (BaseURL.parse(baseURL) as unknown) as URL;
+            const parsedURL = (parse(baseURL) as unknown) as URL;
             this.assignFields(parsedURL);
 
             this._prefix = this.pathname;
