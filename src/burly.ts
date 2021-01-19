@@ -23,6 +23,8 @@ export declare interface BurlyInstance extends URL {
 
     useTemplate(templateFragment: string): BurlyInstance
 
+    appendRawQueryString(rawQueryString: string | null): BurlyInstance
+
     get: string
 
     readonly name: string
@@ -50,6 +52,8 @@ export function Burly(any?: any): Burly {
         addQuery(key: any, value?: any): BurlyInstance
 
         useTemplate(templateFragment: string): BurlyInstance
+
+        appendRawQueryString(rawQueryString: string | null): BurlyInstance
 
         get: string
 
@@ -102,11 +106,13 @@ export function Burly(any?: any): Burly {
             return Object.assign({}, obj);
         }
 
+        // @ts-ignore
         useTemplate(templateFragment: string): BurlyClass {
             this.pathname = this._prefix + encodeURI(templateFragment);
             return this;
         }
 
+        // @ts-ignore
         addParam(key: any, value?: any, strict?: boolean): BurlyClass {
             if (typeof key === 'object') {
                 return this.parseMultipleParameters(key, !!value);
@@ -122,6 +128,7 @@ export function Burly(any?: any): Burly {
             return this;
         }
 
+        // @ts-ignore
         addPrefix(prefix: string): BurlyClass {
             const safePath = this.pathname.substr(this._prefix.length);
 
@@ -131,13 +138,30 @@ export function Burly(any?: any): Burly {
             return this;
         }
 
+        // @ts-ignore
         addSegment(segment: string): BurlyClass {
             this.pathname = this.pathname + encodeURI(segment);
             return this;
         }
 
+        // @ts-ignore
         addQuery(key: any, value?: any): BurlyClass {
             this._query(key, value);
+            return this;
+        }
+
+        // @ts-ignore
+        appendRawQueryString(rawQueryString: string | null): BurlyClass {
+            if (!!rawQueryString) {
+                const queryStringSplit = rawQueryString.split('&').map(raw => raw.split("="))
+                queryStringSplit.forEach(rawAssignment => {
+                    const key = rawAssignment[0];
+                    const value = rawAssignment[1];
+
+                    this._query(key, value);
+                })
+            }
+
             return this;
         }
 
@@ -162,6 +186,7 @@ export function Burly(any?: any): Burly {
         }
 
         private fromInstance(instance: BurlyClass) {
+            // @ts-ignore
             this.assignFields(instance);
 
             this._query(instance.getParsedQuery());
@@ -232,5 +257,5 @@ export function Burly(any?: any): Burly {
         }
     }
 
-    return new BurlyClass(any) as Burly;
+    return new BurlyClass(any) as unknown as Burly;
 }

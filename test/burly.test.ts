@@ -178,3 +178,23 @@ it('#test-add-empty-nested-query', function () {
     expect(emptyBuilderWithTemplate.useTemplate(testURL).addQuery(queryKey, object).get).toEqual(testURL);
 });
 
+it('#test-add-raw-query-string', function () {
+    const rawQueryString = 'limit=50&page=0';
+    const finalURL = `${testURL}?${rawQueryString}`;
+    const builtURL = emptyBuilderWithTemplate.useTemplate(testURL).appendRawQueryString(rawQueryString).get;
+
+    console.log('Result:', builtURL, '===', finalURL);
+
+    expect(builtURL).toEqual(finalURL);
+});
+
+it('#test-add-raw-query-string-null', function () {
+    const rawQueryString = null;
+    const finalURL = `${testURL}`;
+    const builtURL = emptyBuilderWithTemplate.useTemplate(testURL).appendRawQueryString(rawQueryString).get;
+
+    console.log('Result:', builtURL, '===', finalURL);
+
+    expect(builtURL).toEqual(finalURL);
+});
+
