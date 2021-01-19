@@ -199,7 +199,7 @@ export function Burly(any?: any): Burly {
             const addNestedParameters = (key: string, aHash: { [key: string]: any }) => {
                 const nestedQueryParam: string[] = [];
                 Object.keys(aHash).forEach(hashKey => {
-                    if (aHash[hashKey] !== null && aHash[hashKey] !== undefined) {
+                    if (aHaashKey] !== null && aHash[hashKey] !== undefined) {
                         if (typeof aHash[hashKey] === 'string' && !aHash[hashKey].includes('/\'')) {
                             nestedQueryParam.push(`${hashKey}='${aHash[hashKey]}'`)
                         } else {
