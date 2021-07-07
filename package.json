@@ -39,9 +39,6 @@
   "dependencies": {
     "qs": "^6.10.1"
   },
-  "publishConfig": {
-    "@128keaton:registry": "https://npm.pkg.github.com"
-  },
   "files": [
     "dist"
   ]
