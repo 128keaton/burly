@@ -77,6 +77,20 @@ it('#test-query-null-object', function () {
     expect(emptyBuilderWithTemplate.addQuery(paramKey, paramVal).get).toEqual(`${templateFragment}?${paramKey}=${paramVal}`);
 });
 
+it('#test-query-null-object-strict', function () {
+    const paramKey = 'key1';
+    const paramVal = null;
+
+    expect(emptyBuilderWithTemplate.addQuery(paramKey, paramVal, false).get).toEqual(`${templateFragment}`);
+});
+
+it('#test-query-not-null-object-strict', function () {
+    const paramKey = 'key1';
+    const paramVal = 'value1';
+
+    expect(emptyBuilderWithTemplate.addQuery(paramKey, paramVal, false).get).toEqual(`${templateFragment}?${paramKey}=${paramVal}`);
+});
+
 it('#test-create-instance', function () {
     const paramKey = 'key1';
     const paramVal = 'not-null';

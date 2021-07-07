@@ -28,10 +28,12 @@ function Burly(any) {
         BurlyClass.clone = function (obj) {
             return Object.assign({}, obj);
         };
+        // @ts-ignore
         BurlyClass.prototype.useTemplate = function (templateFragment) {
             this.pathname = this._prefix + encodeURI(templateFragment);
             return this;
         };
+        // @ts-ignore
         BurlyClass.prototype.addParam = function (key, value, strict) {
             if (typeof key === 'object') {
                 return this.parseMultipleParameters(key, !!value);
@@ -43,18 +45,40 @@ function Burly(any) {
             }
             return this;
         };
+        // @ts-ignore
         BurlyClass.prototype.addPrefix = function (prefix) {
             var safePath = this.pathname.substr(this._prefix.length);
             this._prefix = this._prefix + encodeURI(prefix);
             this.pathname = this._prefix + safePath;
             return this;
         };
+        // @ts-ignore
         BurlyClass.prototype.addSegment = function (segment) {
             this.pathname = this.pathname + encodeURI(segment);
             return this;
         };
-        BurlyClass.prototype.addQuery = function (key, value) {
-            this._query(key, value);
+        // @ts-ignore
+        BurlyClass.prototype.addQuery = function (key, value, allowNull) {
+            if (allowNull === void 0) { allowNull = true; }
+            if (allowNull) {
+                this._query(key, value);
+            }
+            else if (!allowNull && !!value) {
+                this._query(key, value);
+            }
+            return this;
+        };
+        // @ts-ignore
+        BurlyClass.prototype.appendRawQueryString = function (rawQueryString) {
+            var _this = this;
+            if (!!rawQueryString) {
+                var queryStringSplit = rawQueryString.split('&').map(function (raw) { return raw.split("="); });
+                queryStringSplit.forEach(function (rawAssignment) {
+                    var key = rawAssignment[0];
+                    var value = rawAssignment[1];
+                    _this._query(key, value);
+                });
+            }
             return this;
         };
         Object.defineProperty(BurlyClass.prototype, "get", {
@@ -77,6 +101,7 @@ function Burly(any) {
             }
         };
         BurlyClass.prototype.fromInstance = function (instance) {
+            // @ts-ignore
             this.assignFields(instance);
             this._query(instance.getParsedQuery());
             this._prefix = instance._prefix;

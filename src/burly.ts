@@ -19,7 +19,7 @@ export declare interface BurlyInstance extends URL {
 
     addPrefix(prefix: string): BurlyInstance
 
-    addQuery(key: any, value?: any): BurlyInstance
+    addQuery(key: any, value?: any, allowNull?: boolean): BurlyInstance
 
     useTemplate(templateFragment: string): BurlyInstance
 
@@ -49,7 +49,7 @@ export function Burly(any?: any): Burly {
 
         addPrefix(prefix: string): BurlyInstance
 
-        addQuery(key: any, value?: any): BurlyInstance
+        addQuery(key: any, value?: any, allowNull?: boolean): BurlyInstance
 
         useTemplate(templateFragment: string): BurlyInstance
 
@@ -145,8 +145,12 @@ export function Burly(any?: any): Burly {
         }
 
         // @ts-ignore
-        addQuery(key: any, value?: any): BurlyClass {
-            this._query(key, value);
+        addQuery(key: any, value?: any, allowNull?: boolean = true): BurlyClass {
+            if (allowNull) {
+                this._query(key, value);
+            } else if (!allowNull && !!value) {
+                this._query(key, value);
+            }
             return this;
         }
 

@@ -14,8 +14,9 @@ export declare interface BurlyInstance extends URL {
     addParam(key: any, value?: any, strict?: boolean): BurlyInstance;
     addSegment(segment: string): BurlyInstance;
     addPrefix(prefix: string): BurlyInstance;
-    addQuery(key: any, value?: any): BurlyInstance;
+    addQuery(key: any, value?: any, allowNull?: boolean): BurlyInstance;
     useTemplate(templateFragment: string): BurlyInstance;
+    appendRawQueryString(rawQueryString: string | null): BurlyInstance;
     get: string;
     readonly name: string;
 }
