@@ -97,3 +97,7 @@ lcov.info
 coverage/lcov-report/
 
 .DS_Store
+test/coverage/*.xml
+test/coverage/*.json
+test/coverage/*.info
+test/coverage/lcov-report
