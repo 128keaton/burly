@@ -178,7 +178,6 @@ it('#test-add-nested-query', function () {
 
     let result = emptyBuilderWithTemplate.useTemplate(testURL).addQuery(queryKey, object).get
 
-    console.log('Result:', result);
     expect(result).toEqual(testURL + '?' + queryURL);
 });
 
@@ -197,8 +196,6 @@ it('#test-add-raw-query-string', function () {
     const finalURL = `${testURL}?${rawQueryString}`;
     const builtURL = emptyBuilderWithTemplate.useTemplate(testURL).appendRawQueryString(rawQueryString).get;
 
-    console.log('Result:', builtURL, '===', finalURL);
-
     expect(builtURL).toEqual(finalURL);
 });
 
@@ -206,8 +203,6 @@ it('#test-add-raw-query-string-null', function () {
     const rawQueryString = null;
     const finalURL = `${testURL}`;
     const builtURL = emptyBuilderWithTemplate.useTemplate(testURL).appendRawQueryString(rawQueryString).get;
-
-    console.log('Result:', builtURL, '===', finalURL);
 
     expect(builtURL).toEqual(finalURL);
 });

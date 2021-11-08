@@ -1,4 +1,4 @@
-import {parse as qsParse} from 'querystring';
+import {parse as qsParse} from 'query-string';
 import {Url, format, parse} from 'url'
 
 export interface URL extends Url {
