@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Burly = void 0;
-var querystring_1 = require("querystring");
 var url_1 = require("url");
 function Burly(any) {
     var BurlyClass = /** @class */ (function () {
@@ -97,7 +96,8 @@ function Burly(any) {
                 this.pathname = '';
             }
             if (this.search.length > 1) {
-                this.addQuery(querystring_1.parse(this.search.substring(1)));
+                var searchParams = new URLSearchParams(this.search.substring(1));
+                this.addQuery(searchParams.toString());
             }
         };
         BurlyClass.prototype.fromInstance = function (instance) {
